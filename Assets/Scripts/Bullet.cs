@@ -22,4 +22,9 @@ public class Bullet : MonoBehaviour
     {
         velo = dir * speed;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
 }
