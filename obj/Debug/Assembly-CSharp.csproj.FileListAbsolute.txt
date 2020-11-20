@@ -258,3 +258,12 @@ C:\Unity\Bullet_Fire\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 C:\Unity\Bullet_Fire\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Unity\Bullet_Fire\obj\Debug\Assembly-CSharp.dll
 C:\Unity\Bullet_Fire\obj\Debug\Assembly-CSharp.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\Unity.Timeline.Editor.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\Unity.VSCode.Editor.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\Unity.TextMeshPro.Editor.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\UnityEngine.UI.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\Unity.Timeline.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\Unity.CollabProxy.Editor.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\Unity.Rider.Editor.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\Unity.TextMeshPro.pdb
+C:\Unity\Bullet_Fire\Temp\bin\Debug\UnityEditor.UI.pdb
