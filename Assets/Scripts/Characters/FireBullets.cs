@@ -15,7 +15,7 @@ public class FireBullets : MonoBehaviour
     public float angle;
 
     private bool m_bIsFire = false;
-    private float m_Time;
+    private float m_CoolTime;
     private bool m_bIsSpecial = false;
     private float m_DeployTime = 0;
     private float m_DeployCheckTime = 0;
@@ -36,35 +36,16 @@ public class FireBullets : MonoBehaviour
             m_DeployCheckTime += Time.deltaTime;
         }
 
-        // 사용자 편의 발사 버튼
-        if (Input.GetMouseButtonDown(0) && !m_bIsFire || Input.GetKey(KeyCode.Space) && !m_bIsFire)
+        if(Input.GetKey(KeyCode.Space) && !m_bIsFire)
         {
-            m_bIsFire = true;
-            SetFireType(0.3f, 1, 0);
             StartCoroutine(FireLoop());
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.Space) && m_bIsFire)
         {
-            m_bIsFire = false;
+            m_CoolTime = 0;
             StopAllCoroutines();
+            StartCoroutine(CoolTime());
         }
-
-
-        //else
-        //{
-        //    if (m_Time >= interval && m_bIsFire)
-        //    {
-        //        m_Time = 0;
-        //        m_bIsFire = false;
-        //    }
-        //    m_Time += Time.deltaTime;
-        //}
-
-
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    StopAllCoroutines();
-        //}
     }
 
     void SetFireType(float i, int c, float a)
@@ -121,6 +102,7 @@ public class FireBullets : MonoBehaviour
 
     IEnumerator FireLoop()
     {
+        m_bIsFire = true;
         while (IsValidCondition())
         {
             float gap = count > 1 ? angle / (count - 1) : 0;
@@ -130,10 +112,24 @@ public class FireBullets : MonoBehaviour
                 float theta = startAngle + gap * i;
                 theta *= Mathf.Deg2Rad;
                 GameObject go = Instantiate(bullet, bulletpoint.position, Quaternion.identity, GameObject.Find("CV_Field").transform);
+                go.GetComponent<Bullet>().Name = "Player_Bullet";
                 go.GetComponent<Bullet>().SetNormalizedDirection(new Vector3(Mathf.Cos(theta), Mathf.Sin(theta), 0));
             }
 
             yield return new WaitForSeconds(interval);
+        }
+    }
+
+    IEnumerator CoolTime()
+    {
+        while (interval > m_CoolTime)
+        {
+            m_CoolTime += Time.deltaTime;
+            if(interval < m_CoolTime)
+            {
+                m_bIsFire = false;
+            }
+            yield return null;
         }
     }
 

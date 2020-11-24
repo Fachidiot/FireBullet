@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AI_FireBullets
     - Bullet
     - Effect
     - Enemy
@@ -19,6 +20,8 @@ ScriptsOnlyBuild:
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
+    UnityEditor.UI.dll:
+    - UnityEditor.UI.ImageEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -66,35 +69,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9824}
     - Class: 114
-      Script: {instanceID: 9864}
+      Script: {instanceID: 9852}
     - Class: 114
-      Script: {instanceID: 10032}
+      Script: {instanceID: 9866}
     - Class: 114
-      Script: {instanceID: 10234}
+      Script: {instanceID: 10034}
     - Class: 114
-      Script: {instanceID: 10364}
+      Script: {instanceID: 10236}
     - Class: 114
-      Script: {instanceID: 10462}
+      Script: {instanceID: 10366}
     - Class: 114
-      Script: {instanceID: 10576}
+      Script: {instanceID: 10464}
     - Class: 114
-      Script: {instanceID: 10940}
+      Script: {instanceID: 10578}
     - Class: 114
-      Script: {instanceID: 11018}
+      Script: {instanceID: 10942}
     - Class: 114
-      Script: {instanceID: 11124}
+      Script: {instanceID: 11020}
     - Class: 114
-      Script: {instanceID: 11154}
+      Script: {instanceID: 11126}
     - Class: 114
-      Script: {instanceID: 11290}
+      Script: {instanceID: 11156}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11292}
     - Class: 114
-      Script: {instanceID: 11364}
+      Script: {instanceID: 11314}
     - Class: 114
-      Script: {instanceID: 11396}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 18060}
+      Script: {instanceID: 11368}
+    - Class: 114
+      Script: {instanceID: 11400}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -180,6 +185,12 @@ ScriptsOnlyBuild:
     className: PositionAsUV1
   - hash:
       serializedVersion: 2
+      Hash: 2de1b6238a9d474da7934b5fe026f2cf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AI_FireBullets
+  - hash:
+      serializedVersion: 2
       Hash: abf1930d8126d0b2e00e9449129a0190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -240,7 +251,7 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: e5748be2d8bff76ca7fd907634e02599
+      Hash: 56cc10b6d14cfc986016e80b83a3612c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -312,7 +323,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 2de1b6238a9d474da7934b5fe026f2cf
+      Hash: 3089b3d0972b3df1d8cdf10dd03faf99
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FireBullets
@@ -492,7 +503,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: f6c8e06ea13d45979a7df81c1c91c4a4
+      Hash: 688c17d4c448fd9e5e358fa4b67a81f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bullet
@@ -526,6 +537,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMesh
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Rotate360
   - hash:
       serializedVersion: 2
       Hash: 20eeaeae829475b5e354d1f626c51a2b
@@ -579,7 +596,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Rotate360
+    className: A_Star
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

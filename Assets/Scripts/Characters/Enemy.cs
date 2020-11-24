@@ -27,13 +27,54 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if(m_CurrentHP <= 0)
+        {
+            Destroy(gameObject);
+        }
+        m_Rigid.AddForce(Vector2.left * 20f);
+        if(transform.localPosition.x < Min.x)
+        {
+            Destroy(gameObject);
+        }
         ForceToStay();
         HPBar.value = m_CurrentHP;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Bullet bullet = collision.collider.gameObject.GetComponent<Bullet>();
+        if(collision.gameObject.name == "Player" || collision.gameObject.name == "Enemy")
+        {
+            Vector3 Velo = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            Vector3 Temp = new Vector3(Velo.x, 0, collision.transform.eulerAngles.z);
+            if (Vector3.Dot(Temp, RotateComponent.transform.up) < 0)
+            {
+                if (Velo.x < 0.5f)
+                {
+                    return;
+                }
+                else if (Velo.x < 1)
+                {
+                    m_CurrentHP -= 10f;
+                }
+                else if (Velo.x < 2)
+                {
+                    m_CurrentHP -= 20f;
+                }
+                if (Spark != null)
+                {
+                    Instantiate(Spark, gameObject.transform);
+                }
+            }
+            else
+            { // Value Shield
+
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
         if (bullet != null)
         {
             if (Vector3.Dot(bullet.velo.normalized, RotateComponent.transform.up) < 0)

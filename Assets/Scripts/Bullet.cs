@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public float Damage;
     public float ttl;
     public float speed;
+    public string Name;
 
     void Start()
     {
@@ -29,9 +30,19 @@ public class Bullet : MonoBehaviour
         velo = dir * speed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void SetRot(Vector3 Rot)
     {
-        collision.collider.gameObject.SendMessage("SetDamage", Damage);
+        gameObject.transform.eulerAngles = Rot;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var str_Temp = Name.Split('_');
+        if (str_Temp[0] == collision.gameObject.name)
+        {
+            return;
+        }
+        collision.gameObject.SendMessage("SetDamage", Damage);
         Destroy(gameObject);
     }
 }
