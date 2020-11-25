@@ -23,6 +23,27 @@ public class MobSpawner : MonoBehaviour
 
     private void Start()
     {
+        m_SpawnList = new List<GameObject>();
+        if (MobList.Count <= 0)
+        {
+            return;
+        }
+        m_RandPos.x = 1100;
+        StartCoroutine(RandSpawn());
+    }
+
+    public void reset()
+    {
+        int count = m_SpawnList.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Destroy(m_SpawnList[i]);
+        }
+        m_SpawnList = new List<GameObject>();
+        if (MobList.Count <= 0)
+        {
+            return;
+        }
         m_RandPos.x = 1100;
         StartCoroutine(RandSpawn());
     }

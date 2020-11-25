@@ -11,9 +11,9 @@ public class SystemAutoSet : MonoBehaviour
     public GameObject Mobile1;
     public GameObject Mobile2;
     [Header("Player")]
-    public GameObject Controller;
+    public GameObject GameManager;
 
-    private void Awake()
+    private void Start()
     {
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
@@ -21,8 +21,8 @@ public class SystemAutoSet : MonoBehaviour
                 Desktop1.SetActive(true);
             if (Desktop2 != null)
                 Desktop2.SetActive(true);
-            if (Controller != null)
-                Controller.gameObject.SendMessage("Desktop", SendMessageOptions.DontRequireReceiver);
+            if (GameManager != null)
+                GameManager.gameObject.SendMessage("Desktop", SendMessageOptions.DontRequireReceiver);
         }
         else if (SystemInfo.deviceType == DeviceType.Handheld)
         {
@@ -30,12 +30,8 @@ public class SystemAutoSet : MonoBehaviour
                 Mobile1.SetActive(true);
             if (Mobile2 != null)
                 Mobile2.SetActive(true);
-            if (Controller != null)
-                Controller.gameObject.SendMessage("Mobile", SendMessageOptions.DontRequireReceiver);
-        }
-        else
-        {
-
+            if (GameManager != null)
+                GameManager.gameObject.SendMessage("Mobile", SendMessageOptions.DontRequireReceiver);
         }
     }
 }

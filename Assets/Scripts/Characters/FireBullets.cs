@@ -31,7 +31,7 @@ public class FireBullets : MonoBehaviour
         {
             if(m_DeployTime - m_DeployCheckTime <= 0)
             {
-                SpecialAttack(1);
+                SetFireType(0.3f, 1, 0);
             }
             m_DeployCheckTime += Time.deltaTime;
         }
@@ -60,8 +60,10 @@ public class FireBullets : MonoBehaviour
         switch (i)
         {
             case 1:
-                m_bIsSpecial = false;
-                SetFireType(0.3f, 1, 0);
+                m_bIsSpecial = true;
+                m_DeployCheckTime = 0f;
+                m_DeployTime = 15f;
+                SetFireType(0.1f, 1, 0);
                 break;
             case 2:
                 m_bIsSpecial = true;

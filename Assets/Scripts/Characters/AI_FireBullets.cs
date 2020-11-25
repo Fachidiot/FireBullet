@@ -22,9 +22,6 @@ public class AI_FireBullets : MonoBehaviour
     public bool Count5Fast;
 
     private bool m_bIsFire = false;
-    private bool m_bIsSpecial = false;
-    private float m_DeployTime = 0;
-    private float m_DeployCheckTime = 0;
 
     public void SetAttackType(int type)
     {
@@ -120,7 +117,7 @@ public class AI_FireBullets : MonoBehaviour
                 //go.GetComponent<Bullet>().SetNormalizedDirection(TempDir);
                 Vector3 TempQuat = new Vector3(0, 0, transform.eulerAngles.z + 90);
                 //go.GetComponent<Bullet>().SetNormalizedDirection(new Vector3(Mathf.Cos(theta), Mathf.Sin(theta), 0));
-                Debug.Log(Mathf.Cos(theta) + ", " + Mathf.Sin(theta) + ", ");
+                //Debug.Log(Mathf.Cos(theta) + ", " + Mathf.Sin(theta) + ", ");
                 go.GetComponent<Bullet>().SetNormalizedDirection(new Vector3(Mathf.Cos(theta) + TempDir.x, Mathf.Sin(theta) + TempDir.y, 0));
                 go.GetComponent<Bullet>().SetRot(TempQuat);
             }

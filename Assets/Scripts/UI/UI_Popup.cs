@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UI_Popup : MonoBehaviour
 {
@@ -9,17 +8,15 @@ public class UI_Popup : MonoBehaviour
 
     public void Close()
     {
-        gameObject.SetActive(false);
-
+        Destroy(gameObject);
     }
 
     public void Option()
     {
-        Instantiate(OptionPrefab, gameObject.transform);
-    }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
+        if(GameObject.Find("PN_Option") == null)
+        {
+            var temp = Instantiate(OptionPrefab, GameObject.Find("CV_UI").transform);
+            temp.name = "PN_Option";
+        }
     }
 }

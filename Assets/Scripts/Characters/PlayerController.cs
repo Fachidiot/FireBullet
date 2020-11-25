@@ -9,13 +9,8 @@ public class PlayerController : MonoBehaviour
     public float Speed;
     [Header("HP")]
     public float MaxHP;
-    public Slider HPBar;
     [Header("Armor")]
     public float MaxArmor;
-    public Slider ArmorBar;
-    [Header("이동 범위")]
-    public Vector2Int Max = new Vector2Int(500, 490);
-    public Vector2Int Min = new Vector2Int(-900, -490);
     [Header("Popup")]
     public GameObject Popup;
     [Header("Spark")]
@@ -23,6 +18,11 @@ public class PlayerController : MonoBehaviour
     [Header("Shield")]
     public GameObject Shield;
 
+    private GameObject HPBar;
+    private GameObject ArmorBar;
+
+    private Vector2Int Max;
+    private Vector2Int Min;
     private Vector2 m_PrevPos = Vector2.zero;
     private float m_CurrentHP;
     private float m_CurrentArmor;
@@ -41,11 +41,20 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Max = new Vector2Int((Screen.currentResolution.width - 100) / 2, (Screen.currentResolution.height - 100) / 2);
+        Min = new Vector2Int(-(Screen.currentResolution.width - 100) / 2, -(Screen.currentResolution.height - 100) / 2);
         m_CurrentArmor = MaxArmor;
         m_CurrentHP = MaxHP;
-        HPBar.maxValue = MaxHP;
-        ArmorBar.maxValue = MaxArmor;
         m_Rigid = GetComponent<Rigidbody2D>();
+
+        HPBar = GameObject.Find("PlayerHP_Slider");
+        ArmorBar = GameObject.Find("PlayerArmor_Slider");
+        if(HPBar == null || ArmorBar == null || Popup == null)
+        {
+            return;
+        }
+        HPBar.GetComponent<Slider>().maxValue = MaxHP;
+        ArmorBar.GetComponent<Slider>().maxValue = MaxArmor;
     }
 
     void FixedUpdate()
@@ -57,15 +66,19 @@ public class PlayerController : MonoBehaviour
         }
         if (m_Desktop)
         {
-            MoveM();
             MoveD();
         }
 
+        if(Input.GetMouseButtonDown)
 
         // UI
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Popup.SetActive(true);
+            if(GameObject.Find("PN_Popup") == null)
+            {
+                var temp = Instantiate(Popup, GameObject.Find("CV_UI").transform);
+                temp.name = "PN_Popup";
+            }
         }
     }
 
@@ -74,10 +87,11 @@ public class PlayerController : MonoBehaviour
         if (m_CurrentHP <= 0)
         {
             Destroy(gameObject);
+            return;
         }
         ForceToStay();
-        HPBar.value = m_CurrentHP;
-        ArmorBar.value = m_CurrentArmor;
+        HPBar.GetComponent<Slider>().value = m_CurrentHP;
+        ArmorBar.GetComponent<Slider>().value = m_CurrentArmor;
         if(m_CurrentArmor <= 0 && Shield.activeSelf)
         {
             Shield.SetActive(false);
@@ -88,10 +102,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Vector3 CurrentPos = new Vector3(transform.localPosition.x + 960, transform.localPosition.y + 540, 0);
-            Vector2 CalPos = Input.mousePosition - CurrentPos;
+            Vector2 CurrentPos = new Vector3(transform.localPosition.x + Max.x + 50, transform.localPosition.y + Max.y + 50);
+            Vector2 CalPos = Input.GetTouch(0).deltaPosition - CurrentPos;
             CalPos = CalPos.normalized;
 
+            Debug.Log("CurrentPos : " + CurrentPos + " | MousePos : " + Input.GetTouch(0).deltaPosition);
             if (CalPos.x > 0)
             {
                 if (m_PrevPos.x < 0)
@@ -163,6 +178,18 @@ public class PlayerController : MonoBehaviour
         {
             m_Rigid.velocity = new Vector2(m_Rigid.velocity.y, 0);
             transform.localPosition = new Vector3(Max.x, transform.localPosition.y, transform.localPosition.z);
+        }
+    }
+
+    public void Recover(int type)
+    {
+        if (type == 1)
+        {
+            m_CurrentArmor = MaxArmor;
+        }
+        else if (type == 2)
+        {
+            m_CurrentHP = MaxHP;
         }
     }
     
@@ -427,20 +454,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var str_Temp = collision.gameObject.GetComponent<Bullet>().Name.Split('_');
-        if (name == str_Temp[0])
+        if(collision.GetComponent<Bullet>() != null)
         {
-            return;
-        }
+            var str_Temp = collision.gameObject.GetComponent<Bullet>().Name.Split('_');
+            if (name == str_Temp[0])
+            {
+                return;
+            }
 
-        if(m_CurrentArmor <= 0)
-        {
-            m_CurrentHP -= m_Damage;
+            if (m_CurrentArmor <= 0)
+            {
+                m_CurrentHP -= m_Damage;
+            }
+            else
+            {
+                m_CurrentArmor -= m_Damage;
+            }
         }
-        else
-        {
-            m_CurrentArmor -= m_Damage;
-        }
-
     }
 }
