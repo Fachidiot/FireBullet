@@ -69,8 +69,6 @@ public class PlayerController : MonoBehaviour
             MoveD();
         }
 
-        if(Input.GetMouseButtonDown)
-
         // UI
         if (Input.GetKeyDown(KeyCode.Escape))
         {
