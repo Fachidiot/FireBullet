@@ -100,8 +100,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Vector2 CurrentPos = new Vector3(transform.localPosition.x + Max.x + 50, transform.localPosition.y + Max.y + 50);
-            Vector2 CalPos = Input.GetTouch(0).deltaPosition - CurrentPos;
+            Vector3 CurrentPos = new Vector3(transform.localPosition.x + Max.x + 50, transform.localPosition.y + Max.y + 50, 0);
+            Vector2 CalPos = Input.mousePosition - CurrentPos;
             CalPos = CalPos.normalized;
 
             Debug.Log("CurrentPos : " + CurrentPos + " | MousePos : " + Input.GetTouch(0).deltaPosition);
