@@ -24,11 +24,7 @@ public class GameMgr : MonoBehaviour
 
     void Start()
     {
-        float x = Screen.width;
-        float y = Screen.height;
-        var tempint = y / 1080;
-        GameObject.Find("Field_Resol").transform.localPosition = new Vector3(-x / 2 / tempint, -1080 / 2);
-        var temp = Instantiate(PlayerPrefab, GameObject.Find("Field_Resol").transform);
+        var temp = Instantiate(PlayerPrefab, GameObject.Find("CV_Field").transform);
         temp.transform.localPosition = new Vector3(-700, 0, 0);
         temp.name = "Player";
         if(m_Desktop)
@@ -77,7 +73,7 @@ public class GameMgr : MonoBehaviour
 
     public void reset()
     {
-        var temp = Instantiate(PlayerPrefab, GameObject.Find("Field_Resol").transform);
+        var temp = Instantiate(PlayerPrefab, GameObject.Find("CV_Field").transform);
         temp.transform.localPosition = new Vector3(-700, 0, 0);
         m_IsSave = false;
         temp.name = "Player";
