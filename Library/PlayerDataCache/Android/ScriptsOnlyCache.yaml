@@ -69,57 +69,57 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9678}
+      Script: {instanceID: 9676}
     - Class: 114
-      Script: {instanceID: 9772}
+      Script: {instanceID: 9766}
     - Class: 114
-      Script: {instanceID: 9774}
+      Script: {instanceID: 9768}
     - Class: 114
-      Script: {instanceID: 9834}
+      Script: {instanceID: 9828}
     - Class: 114
-      Script: {instanceID: 9862}
+      Script: {instanceID: 9856}
     - Class: 114
-      Script: {instanceID: 9876}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 9888}
+      Script: {instanceID: 9882}
     - Class: 114
-      Script: {instanceID: 10046}
+      Script: {instanceID: 10040}
     - Class: 114
-      Script: {instanceID: 10216}
+      Script: {instanceID: 10208}
     - Class: 114
-      Script: {instanceID: 10252}
+      Script: {instanceID: 10244}
     - Class: 114
-      Script: {instanceID: 10382}
+      Script: {instanceID: 10374}
     - Class: 114
-      Script: {instanceID: 10418}
+      Script: {instanceID: 10410}
     - Class: 114
-      Script: {instanceID: 10480}
+      Script: {instanceID: 10472}
     - Class: 114
-      Script: {instanceID: 10596}
+      Script: {instanceID: 10588}
     - Class: 114
-      Script: {instanceID: 10790}
+      Script: {instanceID: 10782}
     - Class: 114
-      Script: {instanceID: 10964}
+      Script: {instanceID: 10956}
     - Class: 114
-      Script: {instanceID: 11042}
+      Script: {instanceID: 11034}
     - Class: 114
-      Script: {instanceID: 11150}
+      Script: {instanceID: 11140}
     - Class: 114
-      Script: {instanceID: 11180}
+      Script: {instanceID: 11170}
     - Class: 114
-      Script: {instanceID: 11320}
+      Script: {instanceID: 11306}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11328}
     - Class: 114
-      Script: {instanceID: 11378}
+      Script: {instanceID: 11364}
     - Class: 114
-      Script: {instanceID: 11396}
+      Script: {instanceID: 11382}
     - Class: 114
-      Script: {instanceID: 11428}
+      Script: {instanceID: 11414}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11426}
     - Class: 114
-      Script: {instanceID: 11446}
+      Script: {instanceID: 11432}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -160,25 +160,25 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9678}
+      Script: {instanceID: 9676}
     - Class: 114
-      Script: {instanceID: 9834}
+      Script: {instanceID: 9828}
     - Class: 114
-      Script: {instanceID: 9876}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 10252}
+      Script: {instanceID: 10244}
     - Class: 114
-      Script: {instanceID: 10548}
+      Script: {instanceID: 10540}
     - Class: 114
-      Script: {instanceID: 10596}
+      Script: {instanceID: 10588}
     - Class: 114
-      Script: {instanceID: 11042}
+      Script: {instanceID: 11034}
     - Class: 114
-      Script: {instanceID: 11342}
+      Script: {instanceID: 11328}
     - Class: 114
-      Script: {instanceID: 11396}
+      Script: {instanceID: 11382}
     - Class: 114
-      Script: {instanceID: 11440}
+      Script: {instanceID: 11426}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -720,4 +720,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
   - Assets/Scenes/MainScene.unity
-  playerPath: E:/repos/Unity/SpaceX/Astroneer2D.apk
+  playerPath: C:/Unity/Bullet_Fire/Astroneer2D.apk

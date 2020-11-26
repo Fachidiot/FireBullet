@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     private GameObject HPBar;
     private GameObject ArmorBar;
 
-    private Vector2Int Max;
-    private Vector2Int Min;
+    private Vector2Int Max = new Vector2Int(1920, 1080);
+    private Vector2Int Min = new Vector2Int(0, 0);
     private Vector2 m_PrevPos = Vector2.zero;
     private float m_CurrentHP;
     private float m_CurrentArmor;
@@ -41,8 +41,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        Max = new Vector2Int((Screen.currentResolution.width - 100) / 2, (Screen.currentResolution.height - 100) / 2);
-        Min = new Vector2Int(-(Screen.currentResolution.width - 100) / 2, -(Screen.currentResolution.height - 100) / 2);
+        if(Screen.height / 1080 != 1)
+        {
+
+        }
         m_CurrentArmor = MaxArmor;
         m_CurrentHP = MaxHP;
         m_Rigid = GetComponent<Rigidbody2D>();
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         }
         if (m_Desktop)
         {
+            MoveM();
             MoveD();
         }
 
@@ -98,61 +101,12 @@ public class PlayerController : MonoBehaviour
 
     void MoveM()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 CurrentPos = new Vector3(transform.localPosition.x + Max.x + 50, transform.localPosition.y + Max.y + 50, 0);
-            Vector2 CalPos = Input.mousePosition - CurrentPos;
-            CalPos = CalPos.normalized;
-
-            Debug.Log("CurrentPos : " + CurrentPos + " | MousePos : " + Input.GetTouch(0).deltaPosition);
-            if (CalPos.x > 0)
-            {
-                if (m_PrevPos.x < 0)
-                {
-                    CalPos.x = 0;
-                    if(m_Rigid.velocity.x + 0.1 < 0)
-                    {
-                        m_Rigid.velocity += new Vector2(0.1f, 0);
-                    }
-                }
-            }
-            else
-            {
-                if (m_PrevPos.x > 0)
-                {
-                    CalPos.x = 0;
-                    if(m_Rigid.velocity.x - 0.1 > 0)
-                    {
-                        m_Rigid.velocity -= new Vector2(0.1f, 0);
-                    }
-                }
-            }
-            if (CalPos.y > 0)
-            {
-                if(m_PrevPos.y < 0)
-                {
-                    CalPos.y = 0;
-                    if (m_Rigid.velocity.y + 0.1 < 0)
-                    {
-                        m_Rigid.velocity += new Vector2(0, 0.1f);
-                    }
-                }
-            }
-            else
-            {
-                if(m_PrevPos.y > 0)
-                {
-                    CalPos.y = 0;
-                    if (m_Rigid.velocity.y - 0.1 > 0)
-                    {
-                        m_Rigid.velocity -= new Vector2(0, 0.1f);
-                    }
-                }
-            }
-
-            m_Rigid.AddForce(CalPos * Speed);
-            m_PrevPos = CalPos;
-        }
+        //if (Input.touchCount > 0)
+        //{
+            Vector3 TempPos = Input.mousePosition;
+            Debug.Log(transform.localPosition + ", " + TempPos);
+            transform.localPosition = TempPos;
+        //}
     }
 
     void ForceToStay()
